@@ -24,15 +24,15 @@ public class Main {
                 case 1:
                     System.out.println ("Digite o nome: ");
                     nome = meuScanner.nextLine();
-                    System.out.println ("Digite sua data de nascimento");
-                    dataDeNascimento = meuScanner.next  ();
+                    System.out.println ("Digite sua data de nascimento: ");
+                    dataDeNascimento = meuScanner.next();
                     System.out.println ("Digite seu CPF: ");
                     cpf = meuScanner.nextDouble();
-                    System.out.println ("Digite seu rg");
+                    System.out.println ("Digite seu rg: ");
                     rg = meuScanner.nextDouble();
-                    System.out.println ("Digite seu endereco");
+                    System.out.println ("Digite seu endereco: ");
                     endereco = meuScanner.nextLine();
-                    System.out.println ("Digite seu telefone");
+                    System.out.println ("Digite seu telefone: ");
                     telefone = meuScanner.nextLine();
 
                     pessoa = new Cliente(nome,dataDeNascimento,cpf,rg,endereco,telefone);
