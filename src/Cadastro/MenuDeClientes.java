@@ -1,14 +1,22 @@
 package Cadastro;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class MenuDeClientes {
     private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static ArrayList<Responsavel> responsaveis = new ArrayList<>();
+
+    private static ArrayList<Telefone> telefones = new ArrayList<>();
 
     //metodo GET
     public static ArrayList<Cliente> getClientes() {
         return clientes;
+    }
+    public static ArrayList<Responsavel> getResponsaveis(){
+        return responsaveis;
+    }
+
+    public static ArrayList<Telefone> getTelefones() {
+        return telefones;
     }
 
     //Adicionar um cliente na lista
@@ -17,13 +25,21 @@ public class MenuDeClientes {
         clientes.add(cliente);
     }
 
+    static public void adicionarResponsavel (Responsavel responsavel) {
+        responsaveis.add(responsavel);
+    }
+
+    static public void adicionarTelefone (Telefone contato){
+        telefones.add(contato);
+    }
+
     // listar os dados de todos os clientes
     static public String listarClientes() {
         String saida = "";
 
         for (Cliente cliente : clientes) {
             int i = 1;
-            saida += ("\n ======== CLIENTE Nº" + (i++));
+            saida += (" \n ======== CLIENTE Nº " + (i++) );
             saida += cliente.imprimir();
         }
         return saida;

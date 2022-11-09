@@ -5,13 +5,14 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner meuScanner = new Scanner(System.in);
-
         Cliente pessoa;
+        Cliente pessoaComResponsavel;
         int menu;
         MenuDeClientes iniciar = new MenuDeClientes();
 
-        String nome, dataDeNascimento, endereco, telefone;
-        double cpf, rg;
+        String nome, dataDeNascimento, endereco, telefone, nomeResponsavel;
+        double cpf, rg, pergunta, cpfResponsavel;
+
 
         do{
             iniciar.exibirMenu();
@@ -23,24 +24,67 @@ public class Main {
                     break;
                 case 1:
                     System.out.println ("Digite o nome: ");
-                    nome = meuScanner.nextLine();
-                    System.out.println ("Digite sua data de nascimento: ");
+                    nome = meuScanner.next();
+
+                    System.out.println ("Digite sua data de nascimento");
                     dataDeNascimento = meuScanner.next();
-                    System.out.println ("Digite seu CPF: ");
-                    cpf = meuScanner.nextDouble();
-                    System.out.println ("Digite seu rg: ");
-                    rg = meuScanner.nextDouble();
-                    System.out.println ("Digite seu endereco: ");
-                    endereco = meuScanner.nextLine();
-                    System.out.println ("Digite seu telefone: ");
-                    telefone = meuScanner.nextLine();
 
-                    pessoa = new Cliente(nome,dataDeNascimento,cpf,rg,endereco,telefone);
+                    System.out.println ("Você é maior de idade? 1 para SIM e 2 para NAO");
+                    pergunta = meuScanner.nextDouble();
 
-                    // Guardar o cliente
+                    if (pergunta == 2) {
+                        System.out.println ("Digite o nome do responsável legal: ");
+                        nomeResponsavel = meuScanner.next();
 
-                    MenuDeClientes.adicionarCliente(pessoa);
+                        System.out.println ("Digite o CPF do responsável legal: ");
+                        cpfResponsavel = meuScanner.nextDouble();
 
+                        Responsavel responsavel = new Responsavel(nomeResponsavel, cpfResponsavel);
+
+                        MenuDeClientes.adicionarResponsavel(responsavel);
+
+                        System.out.println("Digite seu CPF: ");
+                        cpf = meuScanner.nextDouble();
+
+                        System.out.println("Digite seu rg");
+                        rg = meuScanner.nextDouble();
+
+                        System.out.println("Digite seu endereco");
+                        endereco = meuScanner.next();
+
+                        System.out.println("Digite seu telefone");
+                        telefone = meuScanner.next();
+
+                        Telefone contato = new Telefone(telefone);
+
+                        MenuDeClientes.adicionarTelefone(contato);
+
+                        pessoaComResponsavel = new Cliente (nome, dataDeNascimento, cpf, rg, endereco, contato, responsavel);
+                        MenuDeClientes.adicionarCliente(pessoaComResponsavel);
+                    }
+                    else {
+                        System.out.println("Digite seu CPF: ");
+                        cpf = meuScanner.nextDouble();
+
+                        System.out.println("Digite seu rg");
+                        rg = meuScanner.nextDouble();
+
+                        System.out.println("Digite seu endereco");
+                        endereco = meuScanner.next();
+
+                        System.out.println("Digite seu telefone");
+                        telefone = meuScanner.next();
+
+                        Telefone contato = new Telefone(telefone);
+
+                        MenuDeClientes.adicionarTelefone(contato);
+
+                        pessoa = new Cliente(nome, dataDeNascimento, cpf, rg, endereco, contato);
+
+                        // Guardar o cliente
+
+                        MenuDeClientes.adicionarCliente(pessoa);
+                    }
                     break;
                 case 2:
                     System.out.println ("====== LISTAR CLIENTES======");
@@ -52,7 +96,6 @@ public class Main {
             }
 
         } while (menu !=0);
-
 
     }
 }
