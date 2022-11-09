@@ -1,19 +1,24 @@
 package Cadastro;
 
 public class Telefone {
-    private String telefone;
+    private String contato;
 
-    public Telefone (String telefone) {
-        this.telefone = telefone;
+    public Telefone (String contato) {
+        this.contato = contato;
     }
 
-    public String getTelefone(){
-        return telefone;
+    public String getContato(){
+        return contato;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setContato(String contato) {
+        this.contato = contato;
     }
 
-
+    @Override
+    public String toString() {
+        return "Telefone{" +
+                "contato='" + contato + '\'' +
+                '}';
+    }
 }
